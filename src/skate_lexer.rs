@@ -12,13 +12,13 @@ pub enum Token {
 }
 
 pub struct Lexer {
-    text: String,
-    idx: usize,
-    tokens: Vec<Token>,
+    pub text: String,
+    pub idx: usize,
+    pub tokens: Vec<Token>,
 }
 
 impl Lexer {
-    fn new(text: &String) -> Lexer {
+    pub fn new(text: &String) -> Lexer {
         Lexer {
             text: text.clone(),
             idx: 0,
@@ -26,11 +26,11 @@ impl Lexer {
         }
     }
 
-    fn get_current_char(&self) -> Option<char> {
+    pub fn get_current_char(&self) -> Option<char> {
         self.text.chars().nth(self.idx)
     }
 
-    fn tokenize(&mut self) {
+    pub fn tokenize(&mut self) {
         loop {
             match self.get_current_char() {
                 Some(c) => {
@@ -105,7 +105,7 @@ impl Lexer {
 }
 
 pub fn run() {
-    let text: String = "1 + 2 - 3.1".to_string();
+    let text: String = "1 + (2 - 3.1)".to_string();
     let mut lexer = Lexer::new(&text);
 
     lexer.tokenize();

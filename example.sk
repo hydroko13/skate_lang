@@ -1,0 +1,8 @@
+with stdlib.io;
+
+fn main {
+    io.out.writeline("Hello world...");
+
+    
+
+}
